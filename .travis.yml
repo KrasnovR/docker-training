@@ -6,4 +6,4 @@ before_install:
   - docker build -t krasnovr/docker-training -f Dockerfile.dev .
 
 script:
- - docker run krasnovr/docker-training npm run test -- --coverage
+ - docker run krasnovr/docker-training npm run test -- --coverage --watchAll=false
