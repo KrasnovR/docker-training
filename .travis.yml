@@ -6,4 +6,17 @@ before_install:
   - docker build -t krasnovr/docker-training -f Dockerfile.dev .
 
 script:
- - docker run krasnovr/docker-training npm run test -- --coverage --watchAll=false
+  - docker run krasnovr/docker-training npm run test -- --coverage --watchAll=false
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-training"
+  env: "Dockertraining-env"
+  bucket_name: "elasticbeanstalk-us-east-1-888273364640"
+  bucker_path: "docker-training" 
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
