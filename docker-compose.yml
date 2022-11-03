@@ -22,4 +22,3 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    command: ["npm", "run", "build"]
